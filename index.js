@@ -3,6 +3,7 @@ const path = require('path');
 const exphbs = require('express-handlebars');
 const logger = require('./middleware/logger');
 const members = require('./Members');
+const cors = require('cors');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.set('view engine', 'handlebars');
 // body parser middleware
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(cors());
 
 // homepage route
 app.get('/', (req, res) => res.render('index', {
